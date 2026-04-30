@@ -7,7 +7,7 @@ variable "env_subscription_id" {
 variable "arm_location" {
   type        = string
   description = "The Azure Region where resources are to be deployed"
-  default     = "westus2"
+  default     = "australiasoutheast"
 }
 
 variable "name_prefix" {

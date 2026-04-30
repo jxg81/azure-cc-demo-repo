@@ -10,7 +10,7 @@
 ##    ** Note ** This will be auto populated for you via ZSEC bash script, so only uncomment if running Terraform manually.
 ##    E.g "abc12345-6789-0123-a456-bc1234567de8"
 
-#env_subscription_id                        = "abc12345-6789-0123-a456-bc1234567de8"
+env_subscription_id                        = "c03482ce-6590-47b1-a9b0-e04634bca95c"
 
 #####################################################################################################################
 ##### Cloud Init Provisioning variables for userdata file  #####
@@ -18,16 +18,16 @@
 
 ## 2. Zscaler Cloud Connector Provisioning URL E.g. connector.zscaler.net/api/v1/provUrl?name=azure_prov_url
 
-#cc_vm_prov_url                             = "connector.zscaler.net/api/v1/provUrl?name=azure_prov_url"
+cc_vm_prov_url                             = "connector.zscalerthree.net/api/v1/provUrl?name=Azure"
 
 ## 3. Azure Vault URL E.g. "https://zscaler-cc-demo.vault.azure.net"
 
-#azure_vault_url                            =  "https://zscaler-cc-demo.vault.azure.net"
+azure_vault_url                            =  "https://zphyrscc.vault.azure.net/"
 
 ## 4. Cloud Connector cloud init provisioning listener port. This is required for Azure LB Health Probe deployments. 
 ## Uncomment and set custom probe port to a single value of 80 or any number between 1024-65535. Default is 50000.
 
-#http_probe_port                            = 50000
+http_probe_port                            = 50000
 
 #####################################################################################################################
 ##### Prerequisite Provisioned Managed Identity Resource and Resource Group  #####
@@ -41,15 +41,15 @@
 ##    Managed Identity is in a different Subscription than the one where Cloud Connector is being deployed.
 ##    E.g "abc12345-6789-0123-a456-bc1234567de8"
 
-#managed_identity_subscription_id           = "abc12345-6789-0123-a456-bc1234567de8"
+managed_identity_subscription_id           = "c03482ce-6590-47b1-a9b0-e04634bca95c"
 
 ## 6. Provide your existing Azure Managed Identity name to attach to the CC VM. E.g cloud_connector_managed_identity
 
-#cc_vm_managed_identity_name                = "cloud_connector_managed_identity"
+cc_vm_managed_identity_name                = "cc-managedid"
 
 ## 7. Provide the existing Resource Group of the Azure Managed Identity name to attach to the CC VM. E.g. cloud_connector_rg_1
 
-#cc_vm_managed_identity_rg                  = "cloud_connector_rg_1"
+cc_vm_managed_identity_rg                  = "micro-seg"
 
 
 #####################################################################################################################
@@ -58,12 +58,12 @@
 
 ## 8. The name string for all Cloud Connector resources created by Terraform for Tag/Name attributes. (Default: zscc)
 
-#name_prefix                                = "zscc"
+name_prefix                                = "zscc"
 
 ## 9. Azure region where Cloud Connector resources will be deployed. This environment variable is automatically populated if running ZSEC script
 ##    and thus will override any value set here. Only uncomment and set this value if you are deploying terraform standalone. (Default: westus2)
 
-#arm_location                               = "westus2"
+arm_location                               = "australiasoutheast"
 
 ## 10. Cloud Connector Azure VM Instance size selection. Uncomment ccvm_instance_type line with desired vm size to change.
 ##    (Default: Standard_D2s_v3)
@@ -79,7 +79,7 @@
 ##    Not configurable for base or base_1cc deployment types. (All others - Default: 2)
 ##    E.g. cc_count set to 4 and 2 zones set ['1","2"] will create 2x CCs in AZ1 and 2x CCs in AZ2
 
-#cc_count                                   = 2
+cc_count                                   = 2
 
 ## 12. By default, no zones are specified in any resource creation meaning they are either auto-assigned by Azure 
 ##    (Virtual Machines and NAT Gateways) or Zone-Redundant (Public IP) based on whatever default configuration is.
@@ -134,11 +134,11 @@
 ## 15. Number of Workload VMs to be provisioned in the workload subnet. Only limitation is available IP space
 ##    in subnet configuration. Only applicable for "base" deployment types. Default workload subnet is /24 so 250 max
 
-#workload_count                             = 2
+workload_count                             = 2
 
 ## 16. Tag attribute "Owner" assigned to all resoure creation. (Default: "zscc-admin")
 
-#owner_tag                                  = "username@company.com"
+owner_tag                                  = "jgreensmith@zscaler.com"
 
 ## 17. Tag attribute "Environment" assigned to all resources created. (Default: "Development")
 
@@ -147,7 +147,7 @@
 ## 18. By default, this script will apply 1 Network Security Group per Cloud Connector instance. 
 ##     Uncomment if you want to use the same Network Security Group for ALL Cloud Connectors (true or false. Default: false)
 
-#reuse_nsg                                  = true
+reuse_nsg                                  = true
 
 ## 19. By default, Host encryption is enabled for Cloud Connector VMs. This does require the EncryptionAtHost feature
 ##     enabled for your subscription though first.

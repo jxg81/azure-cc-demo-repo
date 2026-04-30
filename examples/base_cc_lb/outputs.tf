@@ -109,12 +109,8 @@ output "testbedconfig" {
   value       = local.testbedconfig
 }
 
-resource "local_file" "ssh_config" {
-  content  = local.ssh_config_contents
-  filename = "../ssh_config"
+output "ssh_config" {
+  description = "SSH Conf"
+  value       = local.ssh_config_contents
 }
 
-resource "local_file" "testbed" {
-  content  = local.testbedconfig
-  filename = "../testbed.txt"
-}
