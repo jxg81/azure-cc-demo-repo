@@ -28,6 +28,7 @@ resource "azurerm_network_security_group" "bastion_nsg" {
 resource "azurerm_public_ip" "bastion_pip" {
   name                    = "${var.name_prefix}-bastion-public-ip-${var.resource_tag}"
   location                = var.location
+  sku                     = "Standard"
   resource_group_name     = var.resource_group
   allocation_method       = "Static"
   idle_timeout_in_minutes = 30
